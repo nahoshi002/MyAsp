@@ -11282,11 +11282,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anhha\\source\\repos\\RazorPagesMovie\\RazorPagesMovie\\RazorPagesMovie.csproj",
+      "projectUniqueName": "D:\\ASPNETCORE\\RazorPagesMovie\\RazorPagesMovie\\RazorPagesMovie.csproj",
       "projectName": "RazorPagesMovie",
-      "projectPath": "C:\\Users\\anhha\\source\\repos\\RazorPagesMovie\\RazorPagesMovie\\RazorPagesMovie.csproj",
+      "projectPath": "D:\\ASPNETCORE\\RazorPagesMovie\\RazorPagesMovie\\RazorPagesMovie.csproj",
       "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anhha\\source\\repos\\RazorPagesMovie\\RazorPagesMovie\\obj\\",
+      "outputPath": "D:\\ASPNETCORE\\RazorPagesMovie\\RazorPagesMovie\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",

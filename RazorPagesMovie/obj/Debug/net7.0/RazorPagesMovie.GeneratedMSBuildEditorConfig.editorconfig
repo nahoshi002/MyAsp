@@ -9,57 +9,57 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RazorPagesMovie
 build_property.RootNamespace = RazorPagesMovie
-build_property.ProjectDir = C:\Users\anhha\source\repos\RazorPagesMovie\RazorPagesMovie\
+build_property.ProjectDir = D:\ASPNETCORE\RazorPagesMovie\RazorPagesMovie\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\anhha\source\repos\RazorPagesMovie\RazorPagesMovie
+build_property.MSBuildProjectDirectory = D:\ASPNETCORE\RazorPagesMovie\RazorPagesMovie
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Error.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Index.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Create.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Delete.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Details.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Edit.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Index.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Movies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Privacy.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/_ViewImports.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/_ViewStart.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/anhha/source/repos/RazorPagesMovie/RazorPagesMovie/Pages/Shared/_Layout.cshtml]
+[D:/ASPNETCORE/RazorPagesMovie/RazorPagesMovie/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-tg5po7urw9
