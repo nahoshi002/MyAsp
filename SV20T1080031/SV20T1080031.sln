@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{FE9F2884-E8DA-42AF-A234-3CD7F59DBB5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{9B2895F5-33D2-4FE4-A690-DBBAE141F75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SV20T1080031.Web", "SV20T1080031.Web\SV20T1080031.Web.csproj", "{BF01D2C0-5F9A-42D7-BA39-F394D69EF92D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF01D2C0-5F9A-42D7-BA39-F394D69EF92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF01D2C0-5F9A-42D7-BA39-F394D69EF92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF01D2C0-5F9A-42D7-BA39-F394D69EF92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF01D2C0-5F9A-42D7-BA39-F394D69EF92D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF01D2C0-5F9A-42D7-BA39-F394D69EF92D} = {FE9F2884-E8DA-42AF-A234-3CD7F59DBB5A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA774205-C6EF-4FDE-B29C-293E9B583A6C}
+	EndGlobalSection
+EndGlobal
