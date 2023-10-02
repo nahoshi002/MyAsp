@@ -6084,4 +6084,8 @@
     <None Include="wwwroot\themes\bower_components\select2\src\scss\_single.scss" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Product\" />
+  </ItemGroup>
+
 </Project>

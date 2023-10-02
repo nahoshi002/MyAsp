@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Quản lí nhân viên";
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+
+        <!-- Form tìm kiếm-->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên nhân viên cần tìm...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <a class="btn btn-flat btn-primary" href="~/Admin/Employee/Create">
+                        <i class="fa fa-plus">Bổ sung</i>
+                    </a>
+                </span>
+            </div>
+        </form>
+        <!-- Form tìm kiếm-->
+
+        <p>
+            Có <strong>1,024</strong> nhân viên. Hiện đang ở trang số 1/200
+        </p>
+
+        <!-- Danh sách nhân viên-->
+        <div class="box box-primary ">
+            @for (int i = 1; i <= 20; i++)
+            {
+                <div class="col-sm-4 col-md-4">
+
+                    <div class=" box-body box-profile">
+                        <img class="profile-user-img img-responsive img-circle" src="~/images/employees/meoww.jpg" alt="Employee picture">
+
+                        <h3 class="profile-username text-center">ATEODINANG</h3>
+
+                        <p class="text-muted text-center">nahoshi002@gmail.com</p>
+                        <div class="text-center">
+                            <a href="~/Admin/Employee/Edit" class="btn  btn-info "><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="~/Admin/Employee/ChangePass" class="btn  btn-warning "><i class="fa-solid fa-key"></i></a>
+                            <a href="~/Admin/Employee/Delete" class="btn  btn-danger "><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @* <div class="box-body">
+        <div class="row">
+        <div class="col-sm-4 col-md-2">
+        <h4 class="text-center">Primary</h4>
+
+        <div class="color-palette-set">
+        <div class="bg-light-blue disabled color-palette"><span>Disabled</span></div>
+        <div class="bg-light-blue color-palette"><span>#3c8dbc</span></div>
+        <div class="bg-light-blue-active color-palette"><span>Active</span></div>
+        </div>
+        </div>
+        </div>
+        <!-- /.row -->
+        </div> *@
+
+    </div>
+</div>
