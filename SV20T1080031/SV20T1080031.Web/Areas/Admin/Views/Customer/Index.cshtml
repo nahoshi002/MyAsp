@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<SV20T1080031.DomainModels.Customer>
+@{
     ViewBag.Title = "Danh sách khách hàng";
 }
 
@@ -10,11 +11,13 @@
             <div class="input-group">
                 <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên khách hàng cần tìm...">
                 <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info">
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-flat btn-primary" href="~/Admin/Customer/Create">
-                        <i class="fa fa-plus">Bổ sung</i>
+                    <a href="~/Admin/Customer/Create"
+                       class="btn btn-flat btn-primary"
+                       style="margin-left:5px;">
+                        <i class="fa fa-plus"></i> Bổ sung
                     </a>
                 </span>
             </div>
@@ -44,15 +47,15 @@
                         <tbody>
 
                             <!--Dữ liệu khách hàng truyền vào-->
-                            @for (int i = 1; i <= 10; i++)
+                            @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>Công ty TNHH 1 thành viên ATeo</td>
-                                    <td>ATEODINANG</td>
-                                    <td>TP.Huế</td>
-                                    <td>12/16 Nguyễn Sinh Cung</td>
-                                    <td>0828817234</td>
-                                    <td>nahoshi002@gmail.com</td>
+                                    <td>@item.CustomerName</td>
+                                    <td>@item.ContactName</td>
+                                    <td>@item.Province</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Email</td>
                                     <td>
                                         <a class="btn btn-xs btn-info" href="~/Admin/Customer/Edit/1">
                                             <i class="fa fa-edit"></i>

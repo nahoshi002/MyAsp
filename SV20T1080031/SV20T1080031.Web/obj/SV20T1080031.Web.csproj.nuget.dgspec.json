@@ -4,6 +4,192 @@
     "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj": {}
   },
   "projects": {
+    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj",
+        "projectName": "SV20T1080031.BusinessLayers",
+        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj",
+        "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj"
+              },
+              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj",
+        "projectName": "SV20T1080031.DataLayers",
+        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj",
+        "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.15, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
+        "projectName": "SV20T1080031.DomainModels",
+        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
+        "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +213,17 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj"
+              },
+              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj"
+              },
+              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

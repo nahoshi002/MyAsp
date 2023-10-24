@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SV20T1080031.BusinessLayers;
 
 namespace SV20T1080031.Web.Areas.Admin.Controllers
 {
     [Area ("Admin")]
     public class CustomerController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, string searchValue = "")
         {
-            return View();
+            int rowCount = 0;
+            var model = CommonDataService.ListOfCustomers(out rowCount, page, 10, searchValue);
+            return View(model);
         }
 
         // Thêm khách hàng mới

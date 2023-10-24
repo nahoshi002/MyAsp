@@ -1,8 +1,51 @@
-﻿@{
+﻿@* @model IEnumerable<Person> //khi sử dụng Binding model, phải khai báo kiểu dữ liệu đúng cho tham số truyền vào *@
+@model HomeIndexModel
+@{
     ViewData["Title"] = "Home Page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    // sử dụng ViewData phải ép kiểu
+    // string titleMessage = ViewData["TitleMessage"].ToString();
+    // List<Person> listOfPersons = ViewData["ListOfPersons"] as List<Person>;
+}
+<h1>@Model.TitleMessage</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>PersonId</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ListOfPersons) // Model là dữ liệu mà action truyền vào
+        {
+            <tr>
+                <td>@item?.PersonId</td>
+                <td>@item?.Name</td>
+                <td>@item?.LivePlace</td>
+                <td>@item?.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>StudentId</th>
+            <th>StudentName</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ListOfStudents) // Model là dữ liệu mà action truyền vào
+        {
+            <tr>
+                <td>@item?.StudentId</td>
+                <td>@item?.StudentName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
