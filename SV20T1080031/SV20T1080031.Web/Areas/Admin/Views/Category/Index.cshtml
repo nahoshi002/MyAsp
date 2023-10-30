@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<SV20T1080031.DomainModels.Category>
+@{
     ViewBag.Title = "Danh sách loại hàng";
 }
 
@@ -42,11 +43,11 @@
                         <tbody>
 
                             <!--Dữ liệu loại hàng truyền vào-->
-                            @for (int i = 1; i <= 10; i++)
+                            @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>Đồ gia dụng</td>
-                                    <td>Chảo, bếp điện, nồi lẩu,...</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>@item.Description</td>
                                     <td class="text-right">
                                         <a class="btn btn-xs btn-info" href="~/Admin/Category/Edit/1">
                                             <i class="fa fa-edit"></i>

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<SV20T1080031.DomainModels.Employee>
+@{
     ViewBag.Title = "Quản lí nhân viên";
 }
 
@@ -29,20 +30,48 @@
 
         <!-- Danh sách nhân viên-->
         <div class="box box-primary ">
-            @for (int i = 1; i <= 20; i++)
+            @foreach (var item in Model)
             {
-                <div class="col-sm-4 col-md-4">
+                <div class="col-md-4">
+                    <!-- Profile Image -->
+                    <div class="box box-info">
+                        <div class="box-body box-profile ">
+                            <div class="container-fluid">
+                                <div class="row" style="border-bottom:1px dotted #888888">
+                                    <div class="col-sm-8"><p>@item.FullName</p></div>
+                                    <div class="col-sm-4">
+                                        <td class="text-right">
+                                            <a href="~/Admin/Employee/Edit/123" class="btn btn-xs btn-info">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
 
-                    <div class=" box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="~/images/employees/meoww.jpg" alt="Employee picture">
+                                            <a href="~/Admin/Employee/ChangePass/123" class="btn btn-xs btn-warning">
+                                                <i class="fa fa-key"></i>
+                                            </a>
 
-                        <h3 class="profile-username text-center">ATEODINANG</h3>
-
-                        <p class="text-muted text-center">nahoshi002@gmail.com</p>
-                        <div class="text-center">
-                            <a href="~/Admin/Employee/Edit" class="btn  btn-info "><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="~/Admin/Employee/ChangePass" class="btn  btn-warning "><i class="fa-solid fa-key"></i></a>
-                            <a href="~/Admin/Employee/Delete" class="btn  btn-danger "><i class="fa-solid fa-trash"></i></a>
+                                            <a href="~/Admin/Employee/Delete/123" class="btn btn-xs btn-danger">
+                                                <i class="fa fa-remove"></i>
+                                            </a>
+                                        </td>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img class="profile-user-img img-responsive" src="https://haiyen.life/wp-content/uploads/2023/08/Meme-meo-dang-yeu-4.jpg" alt="User profile picture">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="" style="border-bottom:1px dotted #888888">
+                                            <p><i class="fa fa-birthday-cake"></i>@item.BirthDate</p>
+                                        </div>
+                                        <div class="" style="border-bottom:1px dotted #888888">
+                                            <p><i class="fa fa-phone"></i>@item.Phone</p>
+                                        </div>
+                                        <div class="" style="border-bottom:1px dotted #888888">
+                                            <p><i class="fa fa-envelope"></i>@item.Email</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,6 +91,30 @@
         </div>
         <!-- /.row -->
         </div> *@
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Hiển thị <strong>10</strong> trên tổng số <strong>1,024</strong> loại hàng</div>
+            </div>
 
+            <!--Phân trang-->
+            <div class="col-sm-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button previous disabled" id="example2_previous">
+                            <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Trang trước</a>
+                        </li>
+                        <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
+                        <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li>
+                        <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li>
+                        <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
+                        <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
+                        <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
+                        <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="" tabindex="0">...</a></li>
+                        <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Trang tiếp theo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--Phân trang-->
+        </div>
     </div>
 </div>

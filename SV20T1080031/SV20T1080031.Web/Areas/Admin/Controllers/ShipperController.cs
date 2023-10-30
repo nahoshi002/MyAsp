@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SV20T1080031.BusinessLayers;
 
 namespace SV20T1080031.Web.Areas.Admin.Controllers
 {
@@ -9,9 +10,11 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, string searchValue = "")
         {
-            return View();
+            int rowCount = 0;
+            var model = CommonDataService.ListOfShippers(out rowCount, page, 10, searchValue);
+            return View(model);
         }
 
         // Bổ sung người giao hàng
