@@ -14,7 +14,7 @@ namespace SV20T1080031.DomainModels
         /// <summary>
         /// 
         /// </summary>
-        public int SupplierId { get; set; }
+        public int SupplierID { get; set; }
         public string SupplierName { get; set; } = "";
         public string ContactName { get; set; } = "";
         public string Province { get; set; } = "";

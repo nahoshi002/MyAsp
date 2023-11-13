@@ -1,18 +1,26 @@
-﻿@{
+﻿@model SV20T1080031.DomainModels.Category
+@{
 
 }
 
 <div class="box box-primary">
     <div class=" box-body">
-        <form action="#">
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-warning">
+                <p>@ViewBag.ErrorMessage</p>
+            </div>
+        }
+        <form method="post" action="~/Admin/Category/Save">
+            <input type="hidden" class="form-control" id="" name="CategoryID" value="@Model.CategoryID">
             <div class="form-group">
                 <label for="">Tên loại hàng:</label>
-                <input type="email" class="form-control" id="" autofocus>
+                <input type="text" class="form-control" id="" autofocus name="CategoryName" value="@Model.CategoryName">
             </div>
 
             <div class="form-group">
                 <label for="">Mô tả chi tiết:</label>
-                <input type="email" class="form-control" id="">
+                <input type="text" class="form-control" id="" name="Description" value="@Model.Description">
             </div>
 
             <button type="submit" class="btn btn-primary">

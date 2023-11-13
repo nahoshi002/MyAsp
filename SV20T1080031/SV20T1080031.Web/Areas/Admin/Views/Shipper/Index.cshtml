@@ -1,6 +1,8 @@
-﻿@model IEnumerable<SV20T1080031.DomainModels.Shipper>
+﻿@model SV20T1080031.Web.Models.PaginationSearchShipper
 @{
     ViewBag.Title = "Danh sách người giao hàng";
+    int nextPage = Model.Page + 1;
+    int previousPage = Model.Page - 1;
 }
 
 <div class="box box-primary">
@@ -9,7 +11,7 @@
         <!-- Form tìm kiếm-->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên người vận chuyển cần tìm...">
+                <input type="text" name="SearchValue" class="form-control" placeholder="Nhập tên người vận chuyển cần tìm...">
                 <span class="input-group-btn">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info">
                         <i class="fa fa-search"></i>
@@ -25,8 +27,27 @@
         <!-- Form tìm kiếm-->
 
         <p>
-            Có <strong>1,024</strong> người giao hàng. Hiện đang ở trang số 1/200
+            Có <strong>@string.Format("{0:N0}", Model.RowCount)</strong> loại hàng. Hiện đang ở trang số @Model.Page/@Model.PageCount
         </p>
+
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-warning">
+                <p>@ViewBag.ErrorMessage</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.DeletedMessage))
+        {
+            <div class="alert alert-success">
+                <p>@ViewBag.DeletedMessage</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.SavedMessage))
+        {
+            <div class="alert alert-success">
+                <p>@ViewBag.SavedMessage</p>
+            </div>
+        }
 
         <!--Danh sách người giao hàng-->
         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-reponsive">
@@ -43,16 +64,16 @@
                         <tbody>
 
                             <!--Dữ liệu người giao hàng truyền vào-->
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Data)
                             {
                                 <tr>
                                     <td>@item.ShipperName</td>
                                     <td>@item.Phone</td>
                                     <td class="text-right">
-                                        <a class="btn btn-xs btn-info" href="~/Admin/Shipper/Edit/1">
+                                        <a class="btn btn-xs btn-info" href="~/Admin/Shipper/Edit/@item.ShipperID">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-xs btn-danger" href="~/Admin/Shipper/Delete/1">
+                                        <a class="btn btn-xs btn-danger" href="~/Admin/Shipper/Delete/@item.ShipperID">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>
@@ -82,28 +103,53 @@
             </div>
             <div class="row">
                 <div class="col-sm-5">
-                    <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Hiển thị <strong>10</strong> trên tổng số <strong>1,024</strong> người giao hàng</div>
+                    <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Hiển thị tổng số <strong>@Model.RowCount</strong> người giao hàng</div>
                 </div>
 
-                <!--Phân trang-->
-                <div class="col-sm-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                        <ul class="pagination">
-                            <li class="paginate_button previous disabled" id="example2_previous">
-                                <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Trang trước</a>
-                            </li>
-                            <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
-                            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li>
-                            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li>
-                            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
-                            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
-                            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
-                            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="" tabindex="0">...</a></li>
-                            <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Trang tiếp theo</a></li>
-                        </ul>
+                @if (Model.PageCount > 1)
+                {
+                    <!--Phân trang-->
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                            <ul class="pagination">
+                                @if (Model.Page > 1)
+                                {
+                                    <li class="paginate_button previous" id="example2_previous">
+                                        <a href="~/Admin/Shipper?page=@(Model.Page - 1)&searchValue=@Model.SearchValue" aria-controls="example2" data-dt-idx="0" tabindex="0">Trang trước</a>
+                                    </li>
+                                }
+                                @for (int i = 1; i <= Model.PageCount; i++)
+                                {
+                                    if (i == Model.Page)
+                                    {
+                                        <li class="paginate_button active">
+                                            <a href="#" aria-controls="example2" data-dt-idx="@i" tabindex="0">@i</a>
+                                        </li>
+                                    }
+                                    else if (i <= 4 || i > Model.PageCount - 4 || (i >= Model.Page - 2 && i <= Model.Page + 2))
+                                    {
+                                        <li class="page_link">
+                                            <a href="~/Admin/Shipper?page=@i&searchValue=@Model.SearchValue" aria-controls="example2" data-dt-idx="" tabindex="@i">@i</a>
+                                        </li>
+                                    }
+                                    else if (i == Model.Page - 4 || i == Model.Page + 4)
+                                    {
+                                        <li class="paginate_button">
+                                            <a href="#" aria-controls="example2" data-dt-idx="" tabindex="0">...</a>
+                                        </li>
+                                    }
+                                }
+                                @if (Model.Page < Model.PageCount)
+                                {
+                                    <li class="paginate_button next" id="example2_next">
+                                        <a href="~/Admin/Shipper?page=@(Model.Page + 1)&searchValue=@Model.SearchValue" aria-controls="example2" data-dt-idx="" tabindex="0">Trang tiếp theo</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <!--Phân trang-->
+                    <!--Phân trang-->
+                }
 
             </div>
         </div>

@@ -34,7 +34,7 @@ namespace SV20T1080031.DataLayers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        int add(T data);
+        int Add(T data);
 
         /// <summary>
         /// Cập nhật dữ liệu
@@ -48,20 +48,20 @@ namespace SV20T1080031.DataLayers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        bool Delete(T data);
+        bool Delete(int id);
 
         /// <summary>
         /// Lấy bản ghi dựa vào ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T? get(int id);
+        T? Get(int id);
 
         /// <summary>
         /// Kiểm tra xem dữ liệu có mã ID hiện có đang được sử dụng bởi các dữ liệu khác hay không?
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        bool InUser(int id);
+        bool InUsed(int id);
     }
 }

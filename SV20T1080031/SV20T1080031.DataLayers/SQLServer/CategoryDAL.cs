@@ -18,9 +18,28 @@ namespace SV20T1080031.DataLayers.SQLServer
         {
         }
 
-        public int add(Category data)
+        public int Add(Category data)
         {
-            throw new NotImplementedException();
+            int id = 0;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if exists(select * from Categories where CategoryName = @categoryName)
+                                select -1
+                            else
+                                begin
+                                    insert into Categories(CategoryName,Description)
+                                    values(@categoryName,@description);
+                                    select @@identity;
+                                end";
+                var parameters = new
+                {
+                    categoryName = data.CategoryName ?? "",
+                    description = data.Description ?? ""
+                };
+                id = connection.ExecuteScalar<int>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return id;
         }
 
         public int Count(string searchValue = "")
@@ -40,19 +59,46 @@ namespace SV20T1080031.DataLayers.SQLServer
             return count;
         }
 
-        public bool Delete(Category data)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = "delete from Categories where CategoryID = @categoryId and not exists(select * from Products where CategoryID = @categoryId)";
+                var parameters = new { categoryId = id };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+                connection.Close();
+            }
+            return result;
         }
 
-        public Category? get(int id)
+        public Category? Get(int id)
         {
-            throw new NotImplementedException();
+            Category? data = null;
+            using (var connection = OpenConnection())
+            {
+                var sql = "select * from Categories where CategoryID = @categoryId";
+                var parameters = new { categoryId = id };
+                data = connection.QueryFirstOrDefault<Category>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return data;
         }
 
-        public bool InUser(int id)
+        public bool InUsed(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if exists(select * from Products where CategoryID = @categoryId)
+                                select 1
+                            else 
+                                select 0";
+                var parameters = new { categoryId = id };
+                result = connection.ExecuteScalar<bool>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return result;
         }
 
         public IList<Category> List(int page = 1, int pageSize = 0, string searchValue = "")
@@ -89,7 +135,26 @@ namespace SV20T1080031.DataLayers.SQLServer
 
         public bool Update(Category data)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if not exists(select * from Categories where CategoryID <> @categoryId and CategoryName = @categoryName)
+                                begin
+                                    update Categories 
+                                    set 
+                                        CategoryName = @categoryName,
+                                        Description = @description
+                                    where CategoryID = @categoryId
+                                end";
+                var parameters = new
+                {
+                    categoryId = data.CategoryID,
+                    categoryName = data.CategoryName ?? "",
+                    description = data.Description ?? ""
+                };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+            }
+            return result;
         }
     }
 }

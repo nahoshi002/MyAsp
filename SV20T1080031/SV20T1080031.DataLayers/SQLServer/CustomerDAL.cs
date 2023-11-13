@@ -26,9 +26,33 @@ namespace SV20T1080031.DataLayers.SQLServer
         /// <param name="data"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public int add(Customer data)
+        public int Add(Customer data)
         {
-            throw new NotImplementedException();
+            int id = 0;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if exists(select * from Customers where Email = @Email)
+                                select -1
+                            else
+                                begin
+                                    insert into Customers(CustomerName,ContactName,Province,Address,Phone,Email,IsLocked)
+                                    values(@CustomerName,@ContactName,@Province,@Address,@Phone,@Email,@IsLocked);
+                                    select @@identity;
+                                end";
+                var parameters = new
+                {
+                    customerName = data.CustomerName ?? "",
+                    contactName = data.ContactName ?? "",
+                    Province = data.Province ?? "",
+                    Address = data.Address ?? "",
+                    Phone = data.Phone ?? "",
+                    Email = data.Email ?? "",
+                    IsLocked = data.IsLocked
+                };
+                id = connection.ExecuteScalar<int>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return id;
         }
 
         /// <summary>
@@ -60,9 +84,17 @@ namespace SV20T1080031.DataLayers.SQLServer
         /// <param name="data"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public bool Delete(Customer data)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = "delete from Customers where CustomerId = @customerId and not exists(select * from Orders where CustomerId = @customerId)";
+                var parameters = new { customerId = id };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+                connection.Close();
+            }
+            return result;
         }
 
         /// <summary>
@@ -71,9 +103,17 @@ namespace SV20T1080031.DataLayers.SQLServer
         /// <param name="id"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public Customer? get(int id)
+        public Customer? Get(int id)
         {
-            throw new NotImplementedException();
+            Customer? data = null;
+            using (var connection = OpenConnection())
+            {
+                var sql = "select * from Customers where CustomerId = @customerId";
+                var parameters = new { customerId = id };
+                data = connection.QueryFirstOrDefault<Customer>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return data;
         }
 
         /// <summary>
@@ -82,9 +122,20 @@ namespace SV20T1080031.DataLayers.SQLServer
         /// <param name="id"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public bool InUser(int id)
+        public bool InUsed(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if exists(select * from Orders where CustomerId = @customerId)
+                                select 1
+                            else 
+                                select 0";
+                var parameters = new { customerId = id };
+                result = connection.ExecuteScalar<bool>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return result;
         }
 
         /// <summary>
@@ -135,7 +186,54 @@ namespace SV20T1080031.DataLayers.SQLServer
         /// <exception cref="NotImplementedException"></exception>
         public bool Update(Customer data)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if not exists(select * from Customers where CustomerID <> @customerId and Email = @email)
+                                begin
+                                    update Customers 
+                                    set CustomerName = @customerName,
+                                        ContactName = @contactName,
+                                        Province = @province,
+                                        Address = @address,
+                                        Phone = @phone,
+                                        Email = @email,
+                                        IsLocked = @isLocked
+                                    where CustomerID = @customerId
+                                end";
+                var parameters = new
+                {
+                    customerId = data.CustomerID,
+                    customerName = data.CustomerName ?? "",
+                    contactName = data.ContactName ?? "",
+                    province = data.Province ?? "",
+                    Address = data.Address ?? "",
+                    Phone = data.Phone ?? "",
+                    Email = data.Email ?? "",
+                    isLocked = data.IsLocked
+                };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+            }
+            return result;
+        }
+
+        public bool ChangePass(int id, string newPassword)
+        {
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = "update Customers" +
+                    "      set Password = @newPassword " +
+                    "      where CustomerID = @customerId";
+                var parameters = new 
+                { 
+                    customerId = id ,
+                    newPassword = newPassword
+                };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+                connection.Close();
+            }
+            return result;
         }
     }
 }

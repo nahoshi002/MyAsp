@@ -14,7 +14,7 @@ namespace SV20T1080031.DomainModels
         /// <summary>
         /// 
         /// </summary>
-        public int CategoryId { get; set; }
+        public int CategoryID { get; set; }
         public string CategoryName { get; set; } = "";
         public string Description { get; set; } = "";
     }

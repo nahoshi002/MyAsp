@@ -15,9 +15,33 @@ namespace SV20T1080031.DataLayers.SQLServer
         {
         }
 
-        public int add(Employee data)
+        public int Add(Employee data)
         {
-            throw new NotImplementedException();
+            int id = 0;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if exists(select * from Employees where Email = @Email)
+                                select -1
+                            else
+                                begin
+                                    insert into Employees(FullName,BirthDate,Address,Phone,Email,Photo,IsWorking)
+                                    values(@FullName,@BirthDate,@Address,@Phone,@Email,@Photo,@IsWorking);
+                                    select @@identity;
+                                end";
+                var parameters = new
+                {
+                    fullName = data.FullName ?? "",
+                    birthDate = data.BirthDate ?? "",
+                    Address = data.Address ?? "",
+                    Phone = data.Phone ?? "",
+                    Email = data.Email ?? "",
+                    Photo = data.Photo ?? "",
+                    IsWorking = data.isWorking
+                };
+                id = connection.ExecuteScalar<int>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return id;
         }
 
         public int Count(string searchValue = "")
@@ -37,19 +61,46 @@ namespace SV20T1080031.DataLayers.SQLServer
             return count;
         }
 
-        public bool Delete(Employee data)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = "delete from Employees where EmployeeID = @employeeId and not exists(select * from Orders where EmployeeID = @employeeId)";
+                var parameters = new { employeeId = id };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+                connection.Close();
+            }
+            return result;
         }
 
-        public Employee? get(int id)
+        public Employee? Get(int id)
         {
-            throw new NotImplementedException();
+            Employee? data = null;
+            using (var connection = OpenConnection())
+            {
+                var sql = "select * from Employees where EmployeeID = @employeeId";
+                var parameters = new { employeeId = id };
+                data = connection.QueryFirstOrDefault<Employee>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return data;
         }
 
-        public bool InUser(int id)
+        public bool InUsed(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if exists(select * from Orders where EmployeeID = @employeeId)
+                                select 1
+                            else 
+                                select 0";
+                var parameters = new { employeeId = id };
+                result = connection.ExecuteScalar<bool>(sql: sql, param: parameters, commandType: CommandType.Text);
+                connection.Close();
+            }
+            return result;
         }
 
         public IList<Employee> List(int page = 1, int pageSize = 0, string searchValue = "")
@@ -86,7 +137,54 @@ namespace SV20T1080031.DataLayers.SQLServer
 
         public bool Update(Employee data)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = @"if not exists(select * from Employees where EmployeeID <> @employeeId and Email = @email)
+                                begin
+                                    update Employees 
+                                    set FullName = @fullName,
+                                        BirthDate = @birthDate,
+                                        Address = @address,
+                                        Phone = @phone,
+                                        Email = @email,
+                                        Photo = @photo,
+                                        IsWorking = @isWorking
+                                    where EmployeeID = @employeeId
+                                end";
+                var parameters = new
+                {
+                    employeeId = data.EmployeeID,
+                    fullName = data.FullName ?? "",
+                    birthDate = data.BirthDate ?? "",
+                    Address = data.Address ?? "",
+                    Phone = data.Phone ?? "",
+                    Email = data.Email ?? "",
+                    Photo = data.Photo ?? "",
+                    IsWorking = data.isWorking
+                };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+            }
+            return result;
+        }
+
+        public bool ChangePass(int id, string pass)
+        {
+            bool result = false;
+            using (var connection = OpenConnection())
+            {
+                var sql = "update Employees" +
+                    "      set Password = @password " +
+                    "      where EmployeeID = @employeeId";
+                var parameters = new
+                {
+                    employeeId = id,
+                    password = pass
+                };
+                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+                connection.Close();
+            }
+            return result;
         }
     }
 }
