@@ -31,7 +31,7 @@ namespace SV20T1080031.DataLayers.SQLServer
                 var parameters = new
                 {
                     fullName = data.FullName ?? "",
-                    birthDate = data.BirthDate ?? "",
+                    birthDate = data.BirthDate,
                     Address = data.Address ?? "",
                     Phone = data.Phone ?? "",
                     Email = data.Email ?? "",
@@ -156,7 +156,7 @@ namespace SV20T1080031.DataLayers.SQLServer
                 {
                     employeeId = data.EmployeeID,
                     fullName = data.FullName ?? "",
-                    birthDate = data.BirthDate ?? "",
+                    birthDate = data.BirthDate,
                     Address = data.Address ?? "",
                     Phone = data.Phone ?? "",
                     Email = data.Email ?? "",

@@ -89,6 +89,20 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         {
             ViewBag.Title = data.ShipperID == 0 ? "Bổ sung người giao hàng" : "Cập nhật người giao hàng";
 
+            if (string.IsNullOrWhiteSpace(data.ShipperName))
+            {
+                ModelState.AddModelError(nameof(data.ShipperName), "* Vui lòng nhập tên người giao hàng!");
+            }
+            if (string.IsNullOrWhiteSpace(data.Phone))
+            {
+                ModelState.AddModelError(nameof(data.Phone), "* Vui lòng nhập số điện thoại!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View("Create", data);
+            }
+
             if (data.ShipperID == 0)
             {
                 int shipperId = CommonDataService.AddShipper(data);

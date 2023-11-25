@@ -89,6 +89,20 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         {
             ViewBag.Title = data.CategoryID == 0 ? "Bổ sung loại hàng" : "Cập nhật loại hàng";
 
+            if (string.IsNullOrWhiteSpace(data.CategoryName))
+            {
+                ModelState.AddModelError(nameof(data.CategoryName), "* Tên loại hàng không được để trống!");
+            }
+            if (string.IsNullOrWhiteSpace(data.Description))
+            {
+                ModelState.AddModelError(nameof(data.Description), "* Vui lòng nhập mô tả loại hàng!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View("Create", data);
+            }
+
             if (data.CategoryID == 0)
             {
                 int categoryId = CommonDataService.AddCategory(data);

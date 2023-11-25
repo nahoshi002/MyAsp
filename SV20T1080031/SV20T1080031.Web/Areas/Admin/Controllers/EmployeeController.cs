@@ -90,9 +90,63 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
             return View(model);
         }
 
-        public IActionResult Save(Employee data)
+        public IActionResult Save(Employee data, Employee model, string birthday, IFormFile? uploadPhoto)
         {
             ViewBag.Title = data.EmployeeID == 0 ? "Bổ sung nhân viên" : "Cập nhật thông tin nhân viên";
+
+            if (string.IsNullOrWhiteSpace(data.FullName))
+            {
+                ModelState.AddModelError(nameof(data.FullName), "* Họ tên nhân viên không được để trống!");
+            }
+            if (string.IsNullOrWhiteSpace(data.BirthDate.ToString("dd,MM,yyyy")))
+            {
+                ModelState.AddModelError(nameof(data.BirthDate), "* Ngày sinh không được để trống!");
+            }
+            if (string.IsNullOrWhiteSpace(data.Address))
+            {
+                ModelState.AddModelError(nameof(data.Address), "* Địa chỉ không hợp lệ!");
+            }
+            if (string.IsNullOrWhiteSpace(data.Phone))
+            {
+                ModelState.AddModelError(nameof(data.Phone), "* Số điện thoại không được để trống!");
+            }
+            if (string.IsNullOrWhiteSpace(data.Email))
+            {
+                ModelState.AddModelError(nameof(data.Email), "* Địa chỉ email không được để trống!");
+            }
+            //Xử lý ngày sinh
+            DateTime? dBirthDate = Converter.StringToDateTime(birthday);
+            if (dBirthDate == null)
+                ModelState.AddModelError(nameof(model.BirthDate), "Ngày sinh không hợp lệ");
+            else
+                model.BirthDate = dBirthDate.Value;
+
+            //Xử lý với ảnh
+            //Upload ảnh lên (nếu có), sau khi upload xong thì mới lấy tên file ảnh vừa upload
+            //để gán cho trường Photo của Employee
+            if (uploadPhoto != null)
+            {
+                string fileName = $"{DateTime.Now.Ticks}_{uploadPhoto.FileName}";
+                string filePath = System.IO.Path.Combine(ApplicationContext.HostEnviroment.WebRootPath, @"images\employees", fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    uploadPhoto.CopyTo(stream);
+                }
+                model.Photo = fileName;
+            }
+
+            //Kiểm tra đầu vào của model
+
+            if (!ModelState.IsValid)
+                return Content("Có lỗi xảy ra");
+
+            //Lưu dữ liệu (lưu model vào database)
+            return Json(model);
+
+            if (!ModelState.IsValid)
+            {
+                return View("Create", data);
+            }
 
             if (data.EmployeeID == 0)
             {
@@ -123,5 +177,21 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
                 }
             }
         }
+
+        //public IActionResult Save(Employee model, string birthday, IFormFile? uploadPhoto)
+        //{
+        //    //xử lý ngày sinh
+        //    DateTime? dBirthDate = Convert.ToDateTime(birthday);
+        //    if (birthday == null)
+        //    {
+        //        ModelState.AddModelError(nameof(model.BirthDate), "* Ngày sinh không hợp lệ!")
+        //    }else
+        //    {
+        //        model.BirthDate = dBirthDate.Value;
+        //    }    
+
+        //    //xử lý ảnh
+        //    if ( uploadPhoto != null)
+        //}
     }
 }

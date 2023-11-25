@@ -12,15 +12,17 @@
             </div>
         }
         <form method="post" action="~/Admin/Category/Save">
-            <input type="hidden" class="form-control" id="" name="CategoryID" value="@Model.CategoryID">
+            @Html.HiddenFor(m => m.CategoryID)
             <div class="form-group">
                 <label for="">Tên loại hàng:</label>
-                <input type="text" class="form-control" id="" autofocus name="CategoryName" value="@Model.CategoryName">
+                @Html.ValidationMessageFor(m => m.CategoryName,"", new {@style="color:#f00"})
+                @Html.TextBoxFor(m => m.CategoryName, new { @class="form-control", @autofocus = "autofocus"})
             </div>
 
             <div class="form-group">
                 <label for="">Mô tả chi tiết:</label>
-                <input type="text" class="form-control" id="" name="Description" value="@Model.Description">
+                @Html.ValidationMessageFor(m => m.Description,"", new {@style="color:#f00"})
+                @Html.TextBoxFor(m => m.Description, new { @class="form-control", @autofocus = "autofocus"})
             </div>
 
             <button type="submit" class="btn btn-primary">

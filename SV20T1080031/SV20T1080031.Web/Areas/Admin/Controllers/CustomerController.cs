@@ -99,28 +99,33 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
 
             if ( string.IsNullOrWhiteSpace(data.CustomerName))
             {
-                ModelState.AddModelError(nameof(data.CustomerName), "Tên khách hàng không được để trống!");
+                ModelState.AddModelError(nameof(data.CustomerName), "* Tên khách hàng không được để trống!");
             }
             if (string.IsNullOrWhiteSpace(data.ContactName))
             {
-                ModelState.AddModelError(nameof(data.ContactName), "Tên giao dịch không được để trống!");
+                ModelState.AddModelError(nameof(data.ContactName), "* Tên giao dịch không được để trống!");
             }
             if (string.IsNullOrWhiteSpace(data.Address))
             {
-                ModelState.AddModelError(nameof(data.Address), "Địa chỉ không được để trống!");
+                ModelState.AddModelError(nameof(data.Address), "* Địa chỉ không hợp lệ!");
             }
             if (string.IsNullOrWhiteSpace(data.Province))
             {
-                ModelState.AddModelError(nameof(data.Province), "Tỉnh thành không được để trống!");
+                ModelState.AddModelError(nameof(data.Province), "* Vui lòng chọn tỉnh thành!");
             }
             if (string.IsNullOrWhiteSpace(data.Phone))
             {
-                ModelState.AddModelError(nameof(data.Phone), "Số điện thoại không được để trống!");
+                ModelState.AddModelError(nameof(data.Phone), "* Số điện thoại không được để trống!");
             }
             if (string.IsNullOrWhiteSpace(data.Email))
             {
-                ModelState.AddModelError(nameof(data.Email), "Địa chỉ email không được để trống!");
+                ModelState.AddModelError(nameof(data.Email), "* Địa chỉ email không được để trống!");
             }
+
+            if ( !ModelState.IsValid)
+            {
+                return View("Create", data);
+            }    
 
 
 
