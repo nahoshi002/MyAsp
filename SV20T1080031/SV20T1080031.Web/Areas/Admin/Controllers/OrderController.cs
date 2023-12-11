@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SV20T1080031.Web;
 using System.Drawing.Printing;
 
 namespace LiteCommerce.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = $"{WebUserRoles.Administrator}")]// chuyển đến đăng nhập
     /// <summary>
     /// 
     /// </summary>

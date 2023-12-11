@@ -15,3 +15,20 @@ D:\ASPNETCORE\ASP.Net Core MVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debu
 D:\ASPNETCORE\ASP.Net Core MVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\refint\SV20T1080031.BusinessLayers.dll
 D:\ASPNETCORE\ASP.Net Core MVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.pdb
 D:\ASPNETCORE\ASP.Net Core MVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\ref\SV20T1080031.BusinessLayers.dll
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.BusinessLayers.deps.json
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.BusinessLayers.dll
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.BusinessLayers.pdb
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.DataLayers.dll
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.DomainModels.dll
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.DataLayers.pdb
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\bin\Debug\net6.0\SV20T1080031.DomainModels.pdb
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.csproj.AssemblyReference.cache
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.AssemblyInfoInputs.cache
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.AssemblyInfo.cs
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.csproj.CoreCompileInputs.cache
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.csproj.CopyComplete
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.dll
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\refint\SV20T1080031.BusinessLayers.dll
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\SV20T1080031.BusinessLayers.pdb
+D:\ASPNETCORE\ASP.NetCoreMVC\SV20T1080031\SV20T1080031.BusinessLayers\obj\Debug\net6.0\ref\SV20T1080031.BusinessLayers.dll

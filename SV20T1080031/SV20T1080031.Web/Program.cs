@@ -1,6 +1,7 @@
 ﻿using SV20T1080031.Web;
 using SV20T1080031.Web.AppCodes;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,22 @@ builder.Services.AddControllersWithViews()
         option.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;// tắt thông báo lỗi mặc định
     }
     );
-builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.Cookie.Name = "AuthenticationCookie";
+        option.LoginPath = "/Account/Login"; // chưa đăng nhập nó sẽ về trang login
+        option.AccessDeniedPath = "/Account/AccessDenied";
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(60);// thời gian đăng nhập 60 phút
+    });
+
+builder.Services.AddSession(
+    option =>
+    {
+        option.IdleTimeout = TimeSpan.FromMinutes(60);
+        option.Cookie.HttpOnly = true;
+        option.Cookie.IsEssential = true;
+    });
 
 var app = builder.Build();
 
@@ -23,8 +39,10 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 app.UseRouting();
-app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
+
 
 app.UseEndpoints(endpoints =>
 {

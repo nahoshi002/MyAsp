@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jKbA5QQjRUVwj4/D0AOe5Y1H2N3ToOc+HkjnmdtLqgD4OaKD5KOXlU8lbHL7zurAcGawxkCpErW4QFIDCDNhMw==",
+  "dgSpecHash": "3MgIEIYD3A4KZqtko7Zab/vSx7+eSapX3mZZayESCIJuciq7MA5YBdiEQpv2w+7xPQaivUi8P1xjh2vc8VC3/g==",
   "success": true,
-  "projectFilePath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj",
+  "projectFilePath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anhha\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\anhha\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

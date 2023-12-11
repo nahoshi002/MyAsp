@@ -1,7 +1,7 @@
 ﻿using SV20T1080031.BusinessLayers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SV20T1080031.Web
+namespace SV20T1080031.Web.AppCodes
 {
     /// <summary>
     /// 

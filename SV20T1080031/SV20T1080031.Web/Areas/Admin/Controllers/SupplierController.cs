@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SV20T1080031.BusinessLayers;
 using SV20T1080031.DomainModels;
 using SV20T1080031.Web.Models;
@@ -6,6 +7,7 @@ using System.Drawing.Printing;
 
 namespace SV20T1080031.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = $"{WebUserRoles.Administrator}")]// chuyển đến đăng nhập
     /// <summary>
     /// 
     /// </summary>

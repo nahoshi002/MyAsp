@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SV20T1080031.BusinessLayers;
 using SV20T1080031.DomainModels;
+using SV20T1080031.Web.AppCodes;
 using SV20T1080031.Web.Models;
 
 namespace SV20T1080031.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = $"{WebUserRoles.Administrator}")]// chuyển đến đăng nhập
     [Area("Admin")]
     public class EmployeeController : Controller
     {
@@ -90,7 +93,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
             return View(model);
         }
 
-        public IActionResult Save(Employee data, Employee model, string birthday, IFormFile? uploadPhoto)
+        public IActionResult Save(Employee data, string birthday, IFormFile? uploadPhoto)
         {
             ViewBag.Title = data.EmployeeID == 0 ? "Bổ sung nhân viên" : "Cập nhật thông tin nhân viên";
 
@@ -117,31 +120,30 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
             //Xử lý ngày sinh
             DateTime? dBirthDate = Converter.StringToDateTime(birthday);
             if (dBirthDate == null)
-                ModelState.AddModelError(nameof(model.BirthDate), "Ngày sinh không hợp lệ");
+                ModelState.AddModelError(nameof(data.BirthDate), "Ngày sinh không hợp lệ");
             else
-                model.BirthDate = dBirthDate.Value;
+                data.BirthDate = dBirthDate.Value;
 
             //Xử lý với ảnh
             //Upload ảnh lên (nếu có), sau khi upload xong thì mới lấy tên file ảnh vừa upload
             //để gán cho trường Photo của Employee
             if (uploadPhoto != null)
             {
-                string fileName = $"{DateTime.Now.Ticks}_{uploadPhoto.FileName}";
+                string fileName = $"{uploadPhoto.FileName}";
                 string filePath = System.IO.Path.Combine(ApplicationContext.HostEnviroment.WebRootPath, @"images\employees", fileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     uploadPhoto.CopyTo(stream);
                 }
-                model.Photo = fileName;
+                data.Photo = fileName;
+                //model.Photo = fileName;
+
             }
 
             //Kiểm tra đầu vào của model
 
             if (!ModelState.IsValid)
                 return Content("Có lỗi xảy ra");
-
-            //Lưu dữ liệu (lưu model vào database)
-            return Json(model);
 
             if (!ModelState.IsValid)
             {
@@ -153,7 +155,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
                 int employeeId = CommonDataService.AddEmployee(data);
                 if (employeeId > 0)
                 {
-                    TempData["SavedMessage"] = "Thông tin nhân viên đã được lưu lại!";
+                    TempData["SavedMessage"] = "Thông tin nhân viên đã được lưu lại!";             
                     return RedirectToAction("Index");
                 }
                 else
@@ -168,6 +170,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
                 if (editSuccess)
                 {
                     TempData["SavedMessage"] = "Thông tin nhân viên đã được chỉnh sửa!";
+                    
                     return RedirectToAction("Index");
                 }
                 else

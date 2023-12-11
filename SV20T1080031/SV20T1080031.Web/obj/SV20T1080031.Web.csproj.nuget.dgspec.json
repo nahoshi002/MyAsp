@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj": {}
+    "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj": {}
   },
   "projects": {
-    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj": {
+    "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj",
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj",
         "projectName": "SV20T1080031.BusinessLayers",
-        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj",
+        "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj",
         "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
-        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\obj\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
-                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj"
+              "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj"
               },
-              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
-                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
+              "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
               }
             }
           }
@@ -66,14 +66,14 @@
         }
       }
     },
-    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
+    "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj",
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj",
         "projectName": "SV20T1080031.DataLayers",
-        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj",
+        "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj",
         "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
-        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\obj\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
-                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
+              "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
               }
             }
           }
@@ -135,14 +135,14 @@
         }
       }
     },
-    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+    "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
         "projectName": "SV20T1080031.DomainModels",
-        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
+        "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
         "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
-        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\obj\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -190,14 +190,14 @@
         }
       }
     },
-    "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj": {
+    "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj",
+        "projectUniqueName": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj",
         "projectName": "SV20T1080031.Web",
-        "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj",
+        "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\SV20T1080031.Web.csproj",
         "packagesPath": "C:\\Users\\anhha\\.nuget\\packages\\",
-        "outputPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.Web\\obj\\",
+        "outputPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anhha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -214,14 +214,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj": {
-                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj"
+              "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.BusinessLayers\\SV20T1080031.BusinessLayers.csproj"
               },
-              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
-                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj"
+              "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DataLayers\\SV20T1080031.DataLayers.csproj"
               },
-              "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
-                "projectPath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
+              "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj": {
+                "projectPath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj"
               }
             }
           }

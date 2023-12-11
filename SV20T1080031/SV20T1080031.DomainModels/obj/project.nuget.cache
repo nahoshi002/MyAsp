@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KRdsoVdLEH7cLvULsf+8MFxwiBL+UDhCO7s+Zpk7R42twIq/MLdbx6lCNtLzPpcRwH6ftXrxFY4eD8kvAXp+cw==",
+  "dgSpecHash": "QC3iCtxQC0OUDu0u+MHIygt6fvPJsh7DiGgUYAo8RCETzDbGnkeca/6f20Omp1+gMj3nTKFXwD8TCg61yHir/Q==",
   "success": true,
-  "projectFilePath": "D:\\ASPNETCORE\\ASP.Net Core MVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
+  "projectFilePath": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.DomainModels\\SV20T1080031.DomainModels.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,7 +1,7 @@
 ﻿using SV20T1080031.BusinessLayers;
 using Newtonsoft.Json;
 
-namespace SV20T1080031.Web
+namespace SV20T1080031.Web.AppCodes
 {
     public static class ApplicationContext
     {
