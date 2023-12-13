@@ -11,23 +11,47 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class EmployeeController : Controller
     {
+        private const string Employee_Search = "Employee_Search";
         public const int Page_Size = 10; // Tạo một biến hằng để đồng bộ thuộc tính cho trang web.
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index(int page = 1, string searchValue = "")
+        public IActionResult Index()
         {
+            var input = ApplicationContext.GetSessionData<PaginationSearchInput>(Employee_Search);
+            if (input == null)
+            {
+                input = new PaginationSearchInput()
+                {
+                    Page = 1,
+                    PageSize = Page_Size,
+                    SearchValue = ""
+                };
+            }
+
+            return View(input);
+        }
+
+        /// <summary>
+        /// Hàm trả về danh sách tìm kiếm
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public IActionResult Search(PaginationSearchInput input)
+        {
+
             int rowCount = 0;
-            var data = CommonDataService.ListOfEmployees(out rowCount, page, Page_Size, searchValue ?? "");
+            var data = CommonDataService.ListOfEmployees(out rowCount, input.Page, input.PageSize, input.SearchValue ?? "");
             var model = new PaginationSearchEmployee()
             {
-                Page = page,
-                PageSize = Page_Size,
-                SearchValue = searchValue ?? "", // Nếu giá trị của searchValue là null thì giá trị của nó là một chuỗi rỗng
+                Page = input.Page,
+                PageSize = input.PageSize,
+                SearchValue = input.SearchValue ?? "",
                 RowCount = rowCount,
                 Data = data
             };
+            ApplicationContext.SetSessionData(Employee_Search, input);//lưu lại điều kiện tìm kiếm
 
             string errorMessage = Convert.ToString(TempData["ErrorMessage"]);
             ViewBag.ErrorMessage = errorMessage;

@@ -3,14 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SV20T1080031.BusinessLayers;
 using SV20T1080031.DomainModels;
+using SV20T1080031.Web.AppCodes;
 using SV20T1080031.Web.Models;
+using System.Drawing.Printing;
 
 namespace SV20T1080031.Web.Areas.Admin.Controllers
 {
     [Authorize(Roles = $"{WebUserRoles.Administrator}")]// chuyển đến đăng nhập
-    [Area ("Admin")]
+    [Area("Admin")]
     public class CustomerController : Controller
     {
+        private const string Customer_Search = "Customer_Search";
         public const int Page_Size = 10; // Tạo một biến hằng để đồng bộ thuộc tính cho trang web.
         /// <summary>
         /// 
@@ -18,18 +21,64 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         /// <param name="page"></param>
         /// <param name="searchValue"></param>
         /// <returns></returns>
-        public IActionResult Index(int page = 1, string searchValue = "")
+        //public IActionResult Index(int page = 1, string searchValue = "")
+        //{
+        //    int rowCount = 0;
+        //    var data = CommonDataService.ListOfCustomers(out rowCount, page, Page_Size, searchValue ?? "");
+        //    var model = new PaginationSearchCustomer()
+        //    {
+        //        Page = page,
+        //        PageSize = Page_Size,
+        //        SearchValue = searchValue ?? "", // Nếu giá trị của searchValue là null thì giá trị của nó là một chuỗi rỗng
+        //        RowCount = rowCount,
+        //        Data = data
+        //    };
+
+        //    string errorMessage = Convert.ToString(TempData["ErrorMessage"]);
+        //    ViewBag.ErrorMessage = errorMessage;
+        //    string deletedMessage = Convert.ToString(TempData["DeletedMessage"]);
+        //    ViewBag.DeletedMessage = deletedMessage;
+        //    string savedMessage = Convert.ToString(TempData["SavedMessage"]);
+        //    ViewBag.SavedMessage = savedMessage;
+
+        //    return View(model);
+        //}
+
+        public IActionResult Index()
         {
+            var input = ApplicationContext.GetSessionData<PaginationSearchInput>(Customer_Search);
+            if (input == null)
+            {
+                input = new PaginationSearchInput()
+                {
+                    Page = 1,
+                    PageSize = Page_Size,
+                    SearchValue = ""
+                };
+            }
+
+            return View(input);
+        }
+
+        /// <summary>
+        /// Hàm trả về danh sách tìm kiếm
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public IActionResult Search(PaginationSearchInput input)
+        {
+
             int rowCount = 0;
-            var data = CommonDataService.ListOfCustomers(out rowCount, page, Page_Size, searchValue ?? "");
+            var data = CommonDataService.ListOfCustomers(out rowCount, input.Page, input.PageSize, input.SearchValue ?? "");
             var model = new PaginationSearchCustomer()
             {
-                Page = page,
-                PageSize = Page_Size,
-                SearchValue = searchValue ?? "", // Nếu giá trị của searchValue là null thì giá trị của nó là một chuỗi rỗng
+                Page = input.Page,
+                PageSize = input.PageSize,
+                SearchValue = input.SearchValue ?? "",
                 RowCount = rowCount,
                 Data = data
             };
+            ApplicationContext.SetSessionData(Customer_Search, input);//lưu lại điều kiện tìm kiếm
 
             string errorMessage = Convert.ToString(TempData["ErrorMessage"]);
             ViewBag.ErrorMessage = errorMessage;
@@ -40,6 +89,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
 
             return View(model);
         }
+
 
         // Thêm khách hàng mới
         public IActionResult Create()
@@ -56,7 +106,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         public IActionResult Edit(int id = 0)
         {
             var model = CommonDataService.GetCustomer(id);
-            if (model == null) 
+            if (model == null)
             {
                 return RedirectToAction("Index");
             }
@@ -73,25 +123,25 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         //Xóa khách hàng
         public IActionResult Delete(int id = 0)
         {
-            if(Request.Method == "POST")
+            if (Request.Method == "POST")
             {
                 bool success = CommonDataService.DeleteCustomer(id);
-                if (!success) 
+                if (!success)
                 {
                     TempData["ErrorMessage"] = "Không được phép xóa khách hàng này";
                 }
                 else
                 {
                     TempData["DeletedMessage"] = "Xóa khách hàng thành công!";
-                }    
+                }
 
                 return RedirectToAction("Index");
-            }    
+            }
             var model = CommonDataService.GetCustomer(id);
-            if(model == null)
+            if (model == null)
             {
                 return RedirectToAction("Index");
-            }    
+            }
             return View(model);
         }
 
@@ -99,7 +149,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
         {
             ViewBag.Title = data.CustomerID == 0 ? "Bổ sung khách hàng" : "Cập nhật khách hàng";
 
-            if ( string.IsNullOrWhiteSpace(data.CustomerName))
+            if (string.IsNullOrWhiteSpace(data.CustomerName))
             {
                 ModelState.AddModelError(nameof(data.CustomerName), "* Tên khách hàng không được để trống!");
             }
@@ -124,26 +174,26 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
                 ModelState.AddModelError(nameof(data.Email), "* Địa chỉ email không được để trống!");
             }
 
-            if ( !ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View("Create", data);
-            }    
+            }
 
 
 
             if (data.CustomerID == 0)
             {
                 int customerId = CommonDataService.AddCustomer(data);
-                if(customerId > 0)
+                if (customerId > 0)
                 {
                     TempData["SavedMessage"] = "Thông tin khách hàng đã được lưu lại!";
                     return RedirectToAction("Index");
-                } 
+                }
                 else
                 {
                     ViewBag.ErrorMessage = "Không bổ sung được dữ liệu!";
                     return View("Create", data);
-                }    
+                }
             }
             else
             {
@@ -158,7 +208,7 @@ namespace SV20T1080031.Web.Areas.Admin.Controllers
                     ViewBag.ErrorMessage = "Chỉnh sửa thông tin khách hàng không thành công!";
                     return View("Create", data);
                 }
-            }    
+            }
         }
     }
 }

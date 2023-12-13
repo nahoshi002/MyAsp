@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\images\\employees\\638373860654207200_pcmeow.jpg"
     },
     {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\employees\\meow.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\meow.jpg"
+    },
+    {
       "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\employees\\meoww.jpg",
       "PackagePath": "staticwebassets\\images\\employees\\meoww.jpg"
     },
