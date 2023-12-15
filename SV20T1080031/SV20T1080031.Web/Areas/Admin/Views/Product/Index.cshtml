@@ -1,4 +1,7 @@
-﻿@{
+﻿@using SV20T1080031.Web;
+@using SV20T1080031.Web.AppCodes;
+@model SV20T1080031.Web.Models.PaginationSearchProductInput
+@{
     ViewBag.Title = "Quản lý Mặt hàng";
 }
 
@@ -6,24 +9,18 @@
     <div class="box-header">
     </div>
     <div class="box-body">
-        <form action="#" method="get">
+        <form id="formSearchInput" action="~/Admin/Product/Search" method="get">
             <div class="row">
                 <div class="col-sm-3">
-                    <select class="form-control" name="category">
-                        <option>-- Loại hàng --</option>
-                        <option>Mỹ phẩm</option>
-                        <option>Thực phẩm</option>
-                    </select>
+                    @Html.ValidationMessageFor(m => m.CategoryID,"", new {@style="color:#f00"})
+                    @Html.DropDownListFor(m => m.CategoryID, SelectListHelper.categories(), new { @class="form-control"})
                 </div>
                 <div class="col-sm-3">
-                    <select class="form-control" name="category">
-                        <option>-- Nhà cung cấp --</option>
-                        <option>Công ty TNHH Thành Công</option>
-                        <option>Vina Foods</option>
-                    </select>
+                    @Html.ValidationMessageFor(m => m.SupplierID,"", new {@style="color:#f00"})
+                    @Html.DropDownListFor(m => m.SupplierID, SelectListHelper.suppliers(), new { @class="form-control"})
                 </div>
                 <div class="col-sm-6 input-group">
-                    <input type="text" name="searchValue"
+                    <input type="text" name="searchValue" value="@Model.SearchValue"
                            class="form-control"
                            placeholder="Nhập tên mặt hàng cần tìm">
                     <span class="input-group-btn">
@@ -40,54 +37,42 @@
             </div>
         </form>
 
-        <p style="margin:10px 0 10px 0">
-            Có <strong>1,210</strong> mặt hàng trong tổng số <strong>101</strong> trang
-        </p>
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr class="bg-primary">
-                        <th style="width:80px">Ảnh</th>
-                        <th>Tên mặt hàng</th>
-                        <th>Đơn vị tính</th>
-                        <th>Giá</th>
-                        <th style="width:75px">&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 1; i <= 3; i++)
-                    {
-                        <tr>
-                            <td>
-                                <img src="~/images/products/pcmeow.jpg" style="width:80px" />
-                            </td>
-                            <td style="vertical-align:middle">Meow Series 9 NP900X4C Premium Ultrabook</td>
-                            <td style="vertical-align:middle">Fullbox</td>
-                            <td style="vertical-align:middle">23,900,000</td>
-                            <td class="text-right" style="vertical-align:middle">
-                                <a href="~/Admin/Product/Edit/123" class="btn btn-xs btn-flat btn-info">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a href="~/Admin/Product/Delete/123" class="btn btn-xs btn-flat btn-danger">
-                                    <i class="fa fa-remove"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+        <!-- Form tìm kiếm-->
+        <div id="searchResult">
         </div>
-    </div>
 
-    <div class="box-footer text-center">
-        <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li class="active"><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-        </ul>
     </div>
 </div>
 
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            // khi submit form search thì tìm kiếm từ trang 1
+            $("#formSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+                return;
+            });
+            // khi trang nạp xong thì tìm kiếm theo đang đang lưu trong Model
+            doSearch(@Model.Page)
+        });
+        function doSearch(page) {
+            var url = $("#formSearchInput").prop("action");
+            var postData = $("#formSearchInput").serializeArray();
+            postData.push({ "name": "page", "value": page });
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: postData,
+                error: function () {
+                    alert("Lỗi");
+                },
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+            return;
+
+        }
+    </script>
+}
