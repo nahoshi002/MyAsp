@@ -73,6 +73,18 @@
       "PackagePath": "staticwebassets\\images\\products\\meow.jpg"
     },
     {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\meoww.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\meoww.jpg"
+    },
+    {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\meowww.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\meowww.jpg"
+    },
+    {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\meowwww.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\meowwww.jpg"
+    },
+    {
       "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\pcmeow.jpg",
       "PackagePath": "staticwebassets\\images\\products\\pcmeow.jpg"
     },

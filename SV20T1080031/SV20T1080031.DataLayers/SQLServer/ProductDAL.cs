@@ -21,24 +21,29 @@ namespace SV20T1080031.DataLayers.SQLServer
             int id = 0;
             using (var connection = OpenConnection())
             {
-                var sql = @"insert into Products(ProductName,ProductDescription,SupplierID,CategoryID,Unit,Price, Photo, IsSelling)
-                            values(@productName,@productDescription,@supplierID,@categoryID,@unit,@price,@photo,@isSelling);
-                            select @@identity;
-                               ";
+
+                var sql = @"	if exists(select * from Products where Productid =  @Productid)
+                         select -1
+                     else
+                         begin
+                            INSERT INTO Products(ProductName, CategoryID, SupplierID, Unit, Price, Photo)
+                             VALUES(@ProductName, @CategoryID, @SupplierID, @Unit, @Price, @Photo);
+                            SELECT @@identity;
+                         end";
                 var parameters = new
                 {
-                    productName = data.ProductName ?? "",
-                    productDescription = data.ProductDescription ?? "",
-                    supplierID = data.SupplierId ,
-                    categoryID = data.CategoryId ,
-                    unit = data.Unit ?? "",
-                    price = data.Price ,
-                    photo = data.Photo ?? "",
-                    isSelling = data.IsSelling
+                    Productid = data.ProductId,
+                    ProductName = data.ProductName ?? "",
+                    CategoryID = data.CategoryId,
+                    SupplierID = data.SupplierId,
+                    Unit = data.Unit,
+                    Price = data.Price,
+                    Photo = data.Photo ?? "",
+
                 };
                 id = connection.ExecuteScalar<int>(sql: sql, param: parameters, commandType: CommandType.Text);
                 connection.Close();
-            }
+            };
             return id;
         }
 
@@ -259,14 +264,21 @@ namespace SV20T1080031.DataLayers.SQLServer
             List<ProductAttribute> data;
             using (var connection = OpenConnection())
             {
-                var sql = @"with cte as
-                        (
-	                        select PA.AttributeID, PA.ProductID, PA.AttributeName, PA.AttributeValue, PA.DisplayOrder 
-                            from ProductAttributes as PA
-		                        join Products as P on PA.ProductID = P.ProductID
-		                    Where PA.ProductID = @productID
-                            ORDER BY PA.DisplayOrder ASC;
-                        )";
+                var sql = @"
+            with cte as
+            (
+                select 
+                    PA.AttributeID, 
+                    PA.ProductID, 
+                    PA.AttributeName, 
+                    PA.AttributeValue, 
+                    PA.DisplayOrder 
+                from ProductAttributes as PA
+                join Products as P on PA.ProductID = P.ProductID
+                Where PA.ProductID = @productID
+            )
+
+            select * from cte"; // Chọn dữ liệu từ CTE cần thiết
                 var parameters = new
                 {
                     productID = productID
@@ -283,14 +295,22 @@ namespace SV20T1080031.DataLayers.SQLServer
             List<ProductPhoto> data;
             using (var connection = OpenConnection())
             {
-                var sql = @"with cte as
-                        (
-	                        select PP.PhotoID, PP.ProductID, PP.Photo, PP.Description, PP.DisplayOrder, PP.IsHidden
-                            from ProductPhotos as PP
-                                join Products as P on PP.ProductID = P.ProductID
-                            Where PP.ProductID = @productID
-                            ORDER BY PP.DisplayOrder ASC;
-                        )";
+                var sql = @"
+            with cte as
+            (
+                select 
+                    PP.PhotoID, 
+                    PP.ProductID, 
+                    PP.Photo, 
+                    PP.Description, 
+                    PP.DisplayOrder, 
+                    PP.IsHidden
+                from ProductPhotos as PP
+                join Products as P on PP.ProductID = P.ProductID
+                Where PP.ProductID = @productID
+            )
+
+            select * from cte"; // Chọn dữ liệu từ CTE cần thiết
                 var parameters = new
                 {
                     productID = productID
@@ -307,7 +327,7 @@ namespace SV20T1080031.DataLayers.SQLServer
             bool result = false;
             using (var connection = OpenConnection())
             {
-                var sql = @"if not exists(select * from Products where ProductID <> @productID)
+                var sql = @"if not exists(select * from Products where ProductID <> @productID and ProductName = @productID)
                                 begin
                                     update Products 
                                     set ProductName = @productName,
@@ -330,7 +350,7 @@ namespace SV20T1080031.DataLayers.SQLServer
                     unit = data.Unit ?? "",
                     price = data.Price,
                     photo = data.Photo ?? "",
-                    isLocked = data.IsSelling
+                    isSelling = data.IsSelling
                 };
                 result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
             }
