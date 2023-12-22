@@ -128,13 +128,23 @@ namespace SV20T1080031.DataLayers.SQLServer
             bool result = false;
             using (var connection = OpenConnection())
             {
-                var sql = "delete from Products where ProductID = @productID and not exists(select * from OrderDetails where ProductID = @productID)";
+                var sql = @"
+            DELETE FROM Products 
+            WHERE ProductID = @productID 
+            AND NOT EXISTS (SELECT * FROM OrderDetails WHERE ProductID = @productID);
+
+            DELETE FROM ProductPhotos 
+            WHERE ProductID = @productID;
+
+            DELETE FROM ProductAttributes 
+            WHERE ProductID = @productID;";
+
                 var parameters = new { productID = productID };
                 result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
-                connection.Close();
             }
             return result;
         }
+
 
         public bool DeleteAttribute(long attributeID)
         {
@@ -327,53 +337,54 @@ namespace SV20T1080031.DataLayers.SQLServer
             bool result = false;
             using (var connection = OpenConnection())
             {
-                var sql = @"if not exists(select * from Products where ProductID <> @productID and ProductName = @productID)
-                                begin
-                                    update Products 
-                                    set ProductName = @productName,
-                                        ProductDescription = @productDescription,
-                                        SupplierID = @supplierID,
-                                        CategoryID = @categoryID,
-                                        Unit = @unit,
-                                        Price = @price,
-                                        Photo = @photo,
-                                        IsSelling = @isSelling
-                                    where ProductID = @productID
-                                end";
+                var sql = @"
+            IF NOT EXISTS (SELECT * FROM Products WHERE ProductName = @productName AND ProductID <> @productID)
+            BEGIN
+                UPDATE Products 
+                SET ProductName = @productName,
+                    ProductDescription = @productDescription,
+                    SupplierID = @supplierID,
+                    CategoryID = @categoryID,
+                    Unit = @unit,
+                    Price = @price,
+                    Photo = @photo,
+                    IsSelling = @isSelling
+                WHERE ProductID = @productID
+            END";
+
                 var parameters = new
                 {
                     productID = data.ProductId,
                     productName = data.ProductName ?? "",
                     productDescription = data.ProductDescription ?? "",
-                    supplierID = data.SupplierId ,
+                    supplierID = data.SupplierId,
                     categoryID = data.CategoryId,
                     unit = data.Unit ?? "",
                     price = data.Price,
                     photo = data.Photo ?? "",
                     isSelling = data.IsSelling
                 };
-                result = connection.Execute(sql: sql, param: parameters, commandType: CommandType.Text) > 0;
+
+                result = connection.Execute(sql, parameters, commandType: CommandType.Text) > 0;
             }
             return result;
         }
+
 
         public bool UpdateAttribute(ProductAttribute data)
         {
             bool result = false;
             using (var connection = OpenConnection())
             {
-                var sql = @"if not exists(select * from ProductAttributes where AttributeID <> @attributeID)
-                                begin
-                                    update ProductAttributes 
-                                    set ProductID = @productID,
+                var sql = @" update ProductAttributes 
+                                    set 
                                         AttributeName = @attributeName,
                                         AttributeValue = @attributeValue,
                                         DisplayOrder = @displayOrder
-                                    where AttributeID = @attributeID
-                                end";
+                                    where AttributeID = @attributeID";
                 var parameters = new
                 {
-                    productID = data.ProductId,
+                    attributeID = data.AttributeId,
                     attributeName = data.AttributeName ?? "",
                     attributeValue = data.AttributeValue ?? "",
                     displayOrder = data.DisplayOrder
@@ -388,19 +399,16 @@ namespace SV20T1080031.DataLayers.SQLServer
             bool result = false;
             using (var connection = OpenConnection())
             {
-                var sql = @"if not exists(select * from ProductPhotos where PhotoID <> @photoID)
-                                begin
-                                    update ProductPhotos 
-                                    set ProductID = @productID,
+                var sql = @"update ProductPhotos 
+                                    set 
                                         Photo = @photo,
                                         Description = @description,
                                         DisplayOrder = @displayOrder,
                                         IsHidden = @isHidden
-                                    where PhotoID = @photoID
-                                end";
+                                    where PhotoID = @photoID";
                 var parameters = new
                 {
-                    productID = data.ProductId,
+                    photoID = data.PhotoId,
                     photo = data.Photo ?? "",
                     description = data.Description ?? "",
                     displayOrder = data.DisplayOrder,

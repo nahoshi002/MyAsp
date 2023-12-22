@@ -70,5 +70,28 @@ namespace SV20T1080031.Web.AppCodes
             }
             return list;
         }
+
+        /// <summary>
+        /// Lấy danh sách người giao hàng
+        /// </summary>
+        /// <returns></returns>
+        public static List<SelectListItem> Shippers()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem()
+            {
+                Value = "0",
+                Text = "--Chọn người giao hàng--"
+            });
+            foreach (var item in CommonDataService.ListOfShipperss(""))
+            {
+                list.Add(new SelectListItem()
+                {
+                    Value = item.ShipperID.ToString(),
+                    Text = item.ShipperName
+                });
+            }
+            return list;
+        }
     }
 }

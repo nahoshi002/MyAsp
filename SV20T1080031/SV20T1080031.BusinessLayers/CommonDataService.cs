@@ -255,6 +255,16 @@ namespace SV20T1080031.BusinessLayers
             return shipperDB.List(page, pageSize, searchValue).ToList();
         }
 
+        /// <summary>
+        /// Tìm kiếm và lấy danh sách nhân viên giao hàng không phân trang
+        /// </summary>
+        /// <param name="searchValue"></param> giá trị tìm kiếm ( chuỗi rỗng nếu không tìm kiếm)
+        /// <returns></returns>
+        public static List<Shipper> ListOfShipperss(string searchValue = "")
+        {
+            return shipperDB.List(1, 0, searchValue).ToList();
+        }
+
         public static Shipper? GetShipper(int id)
         {
             return shipperDB.Get(id);

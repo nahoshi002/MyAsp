@@ -1,7 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SV20T1080031.BusinessLayer;
+using SV20T1080031.BusinessLayers;
+using SV20T1080031.DomainModels;
 using SV20T1080031.Web;
+using SV20T1080031.Web.AppCodes;
+using SV20T1080031.Web.Models;
 using System.Drawing.Printing;
+using System.Reflection;
 
 namespace LiteCommerce.Web.Areas.Admin.Controllers
 {
@@ -12,14 +18,54 @@ namespace LiteCommerce.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class OrderController : Controller
     {
+        private const string Product_Search = "Product_Search";
+        private const string Shopping_Cart = "Shopping_Cart";
+        private const string ERROR_MESSAGE = "ErrorMessage";
+        private const string SESSION_CONDITION = "OrderCondition";
+        public const int Page_Size = 10; // Tạo một biến hằng để đồng bộ thuộc tính cho trang web.
         /// <summary>
         /// Hiển thị danh sách đơn hàng
         /// </summary>
         /// <returns></returns>
         public IActionResult Index()
         {
-            return View();
+            var input = ApplicationContext.GetSessionData<PaginationSearchOrderInput>(SESSION_CONDITION);
+            if (input == null)
+            {
+                input = new PaginationSearchOrderInput()
+                {
+                    Page = 1,
+                    PageSize = Page_Size,
+                    SearchValue = "",
+                    Status = 0,
+                };
+            }
+
+            return View(input);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public ActionResult Search(PaginationSearchOrderInput input)
+        {
+            int rowCount = 0;
+            var data = OrderDataService.ListOrders(input.Page, input.PageSize, input.Status, input.SearchValue, out rowCount);
+            var model = new PaginationSearchOrder()
+            {
+                Page = input.Page,
+                PageSize = input.PageSize,
+                SearchValue = input.SearchValue ?? "",
+                RowCount = rowCount,
+                Data = data,
+            };
+            ApplicationContext.SetSessionData(SESSION_CONDITION, input);//lưu lại điều kiện tìm kiếm
+
+            return View(model);
+        }
+
         /// <summary>
         /// Giao diện trang tạo đơn hàng
         /// </summary>

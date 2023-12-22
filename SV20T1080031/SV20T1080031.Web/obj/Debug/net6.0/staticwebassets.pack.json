@@ -69,6 +69,26 @@
       "PackagePath": "staticwebassets\\images\\employees\\pcmeow.jpg"
     },
     {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\IMG_3173.JPG",
+      "PackagePath": "staticwebassets\\images\\products\\IMG_3173.JPG"
+    },
+    {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\b5d0e4bf3ef796a9cfe6.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\b5d0e4bf3ef796a9cfe6.jpg"
+    },
+    {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\download.jfif",
+      "PackagePath": "staticwebassets\\images\\products\\download.jfif"
+    },
+    {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\main-qimg-0163ae4a292e99fdb987c48ab9800340-lq.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\main-qimg-0163ae4a292e99fdb987c48ab9800340-lq.jpg"
+    },
+    {
+      "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\meme-laptop-5fp9pxpqahwb4797.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\meme-laptop-5fp9pxpqahwb4797.jpg"
+    },
+    {
       "Id": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\meow.jpg",
       "PackagePath": "staticwebassets\\images\\products\\meow.jpg"
     },
