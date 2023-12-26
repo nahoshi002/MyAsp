@@ -104,7 +104,7 @@ namespace SV20T1080031.DataLayers.SQLServer
                     where (@searchValue = N'' or ProductName like @searchValue)
                     and (@supplierID = 0 or SupplierID = @supplierID)
                     and (@categoryID = 0 or CategoryID = @categoryID)
-                    and ((@minPrice = 0 and @maxPrice = 0) or (ProductName between @minPrice and @maxPrice))";
+                    and ((@minPrice = 0 and @maxPrice = 0) or (Price between @minPrice and @maxPrice))";
 
                 var parameters = new
                 {
@@ -243,7 +243,7 @@ namespace SV20T1080031.DataLayers.SQLServer
                     where (@searchValue = N'' or ProductName like @searchValue)
                     and (@supplierID = 0 or SupplierID = @supplierID)
                     and (@categoryID = 0 or CategoryID = @categoryID)
-                    and ((@minPrice = 0 and @maxPrice = 0) or (ProductName between @minPrice and @maxPrice))
+                    and ((@minPrice = 0 and @maxPrice = 0) or (Price between @minPrice and @maxPrice))
                 )
 
                 select * from cte
