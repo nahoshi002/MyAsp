@@ -76,8 +76,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/ClearCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcQ2xlYXJDYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/CreateDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcQ3JlYXRlRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/Details.cshtml]
@@ -94,6 +102,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcU2VhcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/SearchProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcU2VhcmNoUHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/ASPNETCORE/ASP.NetCoreMVC/SV20T1080031/SV20T1080031.Web/Areas/Admin/Views/Order/Shipping.cshtml]

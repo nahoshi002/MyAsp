@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8skmdyEczJMV2e3fM3zafPi/5WrW2L1jdzj1PCzgc4g=",
+  "Hash": "fAqYBEJeK4nWel6KuzOvOphXXpNrW6n/TTyFY7mWAkc=",
   "Source": "SV20T1080031.Web",
   "BasePath": "_content/SV20T1080031.Web",
   "Mode": "Default",
@@ -372,6 +372,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\IMG_3173.JPG"
+    },
+    {
+      "Identity": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\IMG_3630.JPG",
+      "SourceId": "SV20T1080031.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\",
+      "BasePath": "_content/SV20T1080031.Web",
+      "RelativePath": "images/products/IMG_3630.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\IMG_3630.JPG"
     },
     {
       "Identity": "D:\\ASPNETCORE\\ASP.NetCoreMVC\\SV20T1080031\\SV20T1080031.Web\\wwwroot\\images\\products\\main-qimg-0163ae4a292e99fdb987c48ab9800340-lq.jpg",

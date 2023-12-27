@@ -144,7 +144,7 @@ namespace SV20T1080031.DataLayers.SQLServer
                                             LEFT JOIN Employees AS e ON o.EmployeeID = e.EmployeeID
                                             LEFT JOIN Shippers AS s ON o.ShipperID = s.ShipperID
                                     WHERE   (@status = 0 OR o.Status = @status)
-                                        AND (@searchValue = N'' OR c.CustomerName LIKE @searchValue OR s.ShipperName LIKE @searchValue)";
+                                        AND (@searchValue is null OR c.CustomerName LIKE @searchValue OR s.ShipperName LIKE @searchValue)";
 
                 var parameters = new
                 {

@@ -30,12 +30,12 @@
             {
                 <tr>
                     <td>@item.CustomerName</td>
-                    <td>@item.@string.Format("{0:dd/MM/yyyy HH:mm}", item.OrderTime)</td>
+                    <td>@item.OrderTime</td>
                     <td>@item.EmployeeFullName</td>
-                    <td>@item.@string.Format("{0:dd/MM/yyyy HH:mm}", item.AcceptTime)</td>
+                    <td>@item.AcceptTime</td>
                     <td>@item.ShipperName</td>
-                    <td>@item.@string.Format("{0:dd/MM/yyyy HH:mm}", item.ShippedTime)</td>
-                    <td>@item.@string.Format("{0:dd/MM/yyyy HH:mm}", item.FinishedTime)</td>
+                    <td>@item.ShippedTime</td>
+                    <td>@item.FinishedTime</td>
                     <td>@item.StatusDescription</td>
                     <td>
                         <a href="~/Admin/Order/Details/@item.OrderID" class="btn btn-info btn-xs">

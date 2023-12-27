@@ -11,15 +11,41 @@
     <div class="box-body">
         <form id="formSearchInput" action="~/Admin/Product/Search" method="get">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     @Html.ValidationMessageFor(m => m.CategoryID,"", new {@style="color:#f00"})
                     @Html.DropDownListFor(m => m.CategoryID, SelectListHelper.categories(), new { @class="form-control"})
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     @Html.ValidationMessageFor(m => m.SupplierID,"", new {@style="color:#f00"})
                     @Html.DropDownListFor(m => m.SupplierID, SelectListHelper.suppliers(), new { @class="form-control"})
                 </div>
-                <div class="col-sm-6 input-group">
+                <div class="col-sm-2">
+                    <select class="form-control" id="minPriceSelect" name="minPrice">
+                        <option value="0">-- Giá trị tối thiểu --</option>
+                        <option value="10000">10.000</option>
+                        <option value="50000">50.000</option>
+                        <option value="100000">100.000</option>
+                        <option value="500000">500.000</option>
+                        <option value="1000000">1.000.000</option>
+                        <option value="5000000">5.000.000</option>
+                        <option value="10000000">10.000.000</option>
+                        <option value="50000000">50.000.000</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" id="maxPriceSelect" name="maxPrice">
+                        <option value="0">-- Giá trị tối đa --</option>
+                        <option value="10000">10.000</option>
+                        <option value="50000">50.000</option>
+                        <option value="100000">100.000</option>
+                        <option value="500000">500.000</option>
+                        <option value="1000000">1.000.000</option>
+                        <option value="5000000">5.000.000</option>
+                        <option value="10000000">10.000.000</option>
+                        <option value="50000000">50.000.000</option>
+                    </select>
+                </div>
+                <div class="col-sm-4 input-group">
                     <input type="text" name="searchValue" value="@Model.SearchValue"
                            class="form-control"
                            placeholder="Nhập tên mặt hàng cần tìm">
@@ -76,3 +102,22 @@
         }
     </script>
 }
+
+<script>
+    var minPriceSelect = document.getElementById('minPriceSelect');
+    var maxPriceSelect = document.getElementById('maxPriceSelect');
+
+    minPriceSelect.addEventListener('change', function () {
+        // Cập nhật giá trị của model.minPrice
+        var minPriceValue = this.value;
+        // Gán giá trị cho biến Razor Model
+        @Model.MinPrice = minPriceValue;
+    });
+
+    maxPriceSelect.addEventListener('change', function () {
+        // Cập nhật giá trị của model.maxPrice
+        var maxPriceValue = this.value;
+        // Gán giá trị cho biến Razor Model
+        @Model.MaxPrice = maxPriceValue;
+    });
+</script>
